@@ -44,19 +44,37 @@ function displayCard(currentId) {
   position.textContent = item.job;
   info.textContent = item.text;
 }
-next.addEventListener("click", (e) => {
-  currentItem++;
-  if (currentItem > reviews.length - 1) {
-    currentItem = 0;
-  }
-  displayCard(currentItem);
-});
-prev.addEventListener("click", (e) => {
-  currentItem--;
-  if (currentItem < 0) {
-    currentItem = reviews.length - 1;
-  }
-  displayCard(currentItem);
+// next.addEventListener("click", (e) => {
+//   currentItem++;
+//   if (currentItem > reviews.length - 1) {
+//     currentItem = 0;
+//   }
+//   displayCard(currentItem);
+// });
+// prev.addEventListener("click", (e) => {
+//   currentItem--;
+//   if (currentItem < 0) {
+//     currentItem = reviews.length - 1;
+//   }
+//   displayCard(currentItem);
+// });
+btns.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    if (btn.classList.contains("next-btn")) {
+      currentItem++;
+      if (currentItem > reviews.length - 1) {
+        currentItem = 0;
+      }
+      displayCard(currentItem);
+    }
+    if (btn.classList.contains("prev-btn")) {
+      currentItem--;
+      if (currentItem < 0) {
+        currentItem = reviews.length - 1;
+      }
+      displayCard(currentItem);
+    }
+  });
 });
 random.addEventListener("click", (e) => {
   currentItem = Math.floor(Math.random() * reviews.length);
