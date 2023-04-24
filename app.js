@@ -37,26 +37,29 @@ const next = document.querySelector(".next-btn");
 const random = document.querySelector(".random-btn");
 const btns = document.querySelectorAll(".btn");
 let currentItem = 0;
-function displayCard(currentId) {
-  const item = reviews[currentId];
+function displayCard() {
+  const item = reviews[currentItem];
   image.src = item.img;
   person.textContent = item.name;
   position.textContent = item.job;
   info.textContent = item.text;
 }
+window.addEventListener("DOMContentLoaded", () => {
+  displayCard();
+});
 // next.addEventListener("click", (e) => {
 //   currentItem++;
 //   if (currentItem > reviews.length - 1) {
 //     currentItem = 0;
 //   }
-//   displayCard(currentItem);
+//   displayCard();
 // });
 // prev.addEventListener("click", (e) => {
 //   currentItem--;
 //   if (currentItem < 0) {
 //     currentItem = reviews.length - 1;
 //   }
-//   displayCard(currentItem);
+//   displayCard();
 // });
 btns.forEach((btn) => {
   btn.addEventListener("click", (e) => {
@@ -65,18 +68,18 @@ btns.forEach((btn) => {
       if (currentItem > reviews.length - 1) {
         currentItem = 0;
       }
-      displayCard(currentItem);
+      displayCard();
     }
     if (btn.classList.contains("prev-btn")) {
       currentItem--;
       if (currentItem < 0) {
         currentItem = reviews.length - 1;
       }
-      displayCard(currentItem);
+      displayCard();
     }
   });
 });
 random.addEventListener("click", (e) => {
   currentItem = Math.floor(Math.random() * reviews.length);
-  displayCard(currentItem);
+  displayCard();
 });
